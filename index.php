@@ -83,8 +83,6 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
                 </form> 
                 <?php
                 }
-                else
-                {
                 ?>
                 <h3 align="center">Register</h3>   
                 <br />   
