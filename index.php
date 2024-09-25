@@ -1,4 +1,55 @@
-<!DOCTYPE html>   
+<?php   
+$connect = mysqli_connect("localhost", "root", "", "testing");   
+session_start();   
+if(isset($_SESSION["username"]))   
+{   
+header("location:entry.php");   
+}   
+if(isset($_POST["register"]))   
+{   
+if(empty($_POST["username"]) && empty($_POST["password"]))   
+{   
+echo '<script>alert("Both Fields are required")</script>';   
+}   
+else   
+{   
+$username = mysqli_real_escape_string($connect, $_POST["username"]);   
+$password = mysqli_real_escape_string($connect, $_POST["password"]);   
+$password = md5($password);   
+$query = "INSERT INTO users (username, password) VALUES('$username', '$password')";  
+   if(mysqli_query($connect, $query))   
+           {   
+                echo '<script>alert("Registration Done")</script>';   
+           }   
+      }   
+ }   
+ if(isset($_POST["login"]))   
+ {   
+      if(empty($_POST["username"]) && empty($_POST["password"]))   
+      {   
+           echo '<script>alert("Both Fields are required")</script>';   
+      }   
+      else   
+      {   
+           $username = mysqli_real_escape_string($connect, $_POST["username"]);   
+           $password = mysqli_real_escape_string($connect, $_POST["password"]);   
+           $password = md5($password);   
+           $query = "SELECT * FROM users WHERE username = '$username' AND password = 
+'$password'";   
+           $result = mysqli_query($connect, $query);   
+           if(mysqli_num_rows($result) > 0)   
+           {   
+                $_SESSION['username'] = $username;   
+                header("location:entry.php");   
+           }   
+           else   
+           {   
+                echo '<script>alert("Wrong User Details")</script>';   
+           }   
+      }   
+ }   
+ ?>   
+ <!DOCTYPE html>   
  <html>   
       <head>   
            <title>IAS 2 Hands On | PHP Login Registration Form with md5() Password Encryption</title>   
@@ -13,8 +64,8 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <center><img src="bcclogin.png" width="300"></center> 
                 <h3 align="center">Login and Registration Form with Password Encryption</h3>   
                 <br />   
-                <?php  
-  if(isset($_GET["action"]) == "login")   
+                <?php   
+ if(isset($_GET["action"]) == "login")   
                 {   
                 ?>   
                 <h3 align="center">Login</h3>   
