@@ -10,46 +10,20 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
       <body>   
            <br /><br />   
            <div class="container" style="width:500px;">  
-    <center><img src="bcclogin.png" width="300"></center> 
-                <h3 align="center">Login and Registration Form with Password Encryption</h3>   
+   <center><img src="bcclogin.png" width="300"></center>      
+                <h3 align="center">Welcome to Information Assurance and Security 2!</h3>   
+    <h5 align="center">Encryption protects data by scrambling it with a 
+randomly generated passcode,  
+    called an encryption key. Without the key, third parties will be unable 
+to view your data.  
+    However, hackers can attempt to steal access by impersonating an 
+authorized user.  
+    Encryption authentication helps protect the key from bad 
+actors.</h5> 
                 <br />   
-                <?php  
-  if(isset($_GET["action"]) == "login")   
-                {   
-                ?>   
-                <h3 align="center">Login</h3>   
-                <br />   
-                <form method="post">   
-                     <label>Enter Username</label>   
-                     <input type="text" name="username" class="form-control" />   
-                     <br />   
-                     <label>Enter Password</label>   
-                     <input type="password" name="password" class="form-control" />   
-                     <br />   
-                     <input type="submit" name="login" value="Login" class="btn btn-info" />   
-                     <br />   
-                     <p align="center"><a href="index.php">Register</a></p>   
-                </form>   
-                <?php        
-                }   
-                else   
-                {   
-                ?>   
-                <h3 align="center">Register</h3>   
-                <br />   
-                <form method="post">   
-                     <label>Enter Username</label>   
-                     <input type="text" name="username" class="form-control" />   
-                     <br />   
-                     <label>Enter Password</label>   
-                     <input type="password" name="password" class="form-control" />   
-                     <br />   
-                     <input type="submit" name="register" value="Register" class="btn btn-info" />   
-                     <br />   
-                     <p align="center"><a href="index.php?action=login">Login</a></p>   
-                </form>   
                 <?php   
-                }   
+                echo '<h1>Welcome - '.$_SESSION["username"].'</h1>';   
+                echo '<label><a href="logout.php">Logout</a></label>';   
                 ?>   
            </div>   
       </body>   
