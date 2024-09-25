@@ -1,3 +1,11 @@
+<?php   
+ //entry.php   
+ session_start();   
+ if(!isset($_SESSION["username"]))   
+ {   
+      header("location:index.php?action=login");   
+ }   
+ ?>   
  <!DOCTYPE html>   
  <html>   
       <head>   
@@ -27,4 +35,4 @@ actors.</h5>
                 ?>   
            </div>   
       </body>   
- </html>   
+ </html>  
