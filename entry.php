@@ -31,7 +31,7 @@ actors.</h5>
                 <br />   
                 <?php   
                 echo '<h1>Welcome - '.$_SESSION["username"].'</h1>';   
-                echo '<label><a href="logout.php">Logout</a></label>';   
+                echo '<a href="logout.php">Logout</a>';   
                 ?>   
            </div>   
       </body>   
